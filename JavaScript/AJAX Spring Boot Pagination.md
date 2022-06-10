@@ -1,14 +1,9 @@
 Link : https://roytuts.com/bootstrap-ajax-spring-boot-pagination/
 
 Spring Boot pagination with AJAX
-<<<<<<< HEAD
-```ex.js
-    <script th:inline="javascript">
-=======
 
 ```
         <script th:inline="javascript">
->>>>>>> d7c346372cd4d29c0c877eeedf201e1a00d8d490
         $(document).ready(function() {
             let totalPages = 1;
 
@@ -161,8 +156,4 @@ Spring Boot pagination with AJAX
             })();
         });
     </script>
-<<<<<<< HEAD
 ```
-=======
-    ```
->>>>>>> d7c346372cd4d29c0c877eeedf201e1a00d8d490
