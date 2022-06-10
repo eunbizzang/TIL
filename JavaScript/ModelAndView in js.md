@@ -1,8 +1,6 @@
 How to access variables from the ModelAndView in JavaScript
 
 
-ex)
-
 ```ex.js
 <script>
   var ex = [[${ModelAndViewData}]];
