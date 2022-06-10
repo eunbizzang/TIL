@@ -3,11 +3,11 @@ How to access variables from the ModelAndView in JavaScript
 
 ex)
 
-'''ex.js
+```ex.js
 <script>
   var ex = [[${ModelAndViewData}]];
 </script>
-'''
+```
 
 Optional chaining (?.)
 >The optional chaining operator (?.) enables you to read the value of a property located deep 
