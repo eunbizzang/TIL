@@ -2,8 +2,8 @@ Link : https://roytuts.com/bootstrap-ajax-spring-boot-pagination/
 
 Spring Boot pagination with AJAX
 
-```
-        <script th:inline="javascript">
+```ex.js
+    <script th:inline="javascript">
         $(document).ready(function() {
             let totalPages = 1;
 
