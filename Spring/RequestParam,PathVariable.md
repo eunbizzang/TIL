@@ -5,7 +5,7 @@ Link : https://docs.spring.io/spring-framework/docs/current/reference/html/web.h
 You can use the @RequestParam annotation to bind Servlet request parameters (that is, query parameters or form data) to a method argument in a controller.
 example/type=x&name=x
 
-``Java
+```ex.java
 @Controller
 @RequestMapping("/pets")
 public class EditPetForm {
@@ -22,7 +22,7 @@ public class EditPetForm {
     // ...
 
 }
-``
+```
 By default, method parameters that use this annotation are required, but you can specify that a method parameter is optional by setting the @RequestParam annotation’s required flag to false or by declaring the argument with an java.util.Optional wrapper.
 
 
@@ -53,15 +53,15 @@ Some example patterns:
 
 Captured URI variables can be accessed with @PathVariable. For example:
 
-``Java
+```ex.java
 @GetMapping("/owners/{ownerId}/pets/{petId}")
 public Pet findPet(@PathVariable Long ownerId, @PathVariable Long petId) {
     // ...
 }
-``
+```
 You can declare URI variables at the class and method levels, as the following example shows:
 
-``Java
+```ex.java
 @Controller
 @RequestMapping("/owners/{ownerId}")
 public class OwnerController {
@@ -71,7 +71,7 @@ public class OwnerController {
         // ...
     }
 }
-``
+```
 URI variables are automatically converted to the appropriate type, or TypeMismatchException is raised. Simple types (int, long, Date, and so on) are supported by default and you can register support for any other data type.
 
 
@@ -79,12 +79,12 @@ URI variables are automatically converted to the appropriate type, or TypeMismat
 
 You can use the @ModelAttribute annotation on a method argument to access an attribute from the model or have it be instantiated if not present. The model attribute is also overlain with values from HTTP Servlet request parameters whose names match to field names. This is referred to as data binding, and it saves you from having to deal with parsing and converting individual query parameters and form fields. The following example shows how to do so:
 
-``Java
+```ex.java
 @PostMapping("/owners/{ownerId}/pets/{petId}/edit")
 public String processSubmit(@ModelAttribute Pet pet) {
     // method logic...
 }
-``
+```
 The Pet instance above is sourced in one of the following ways:
 
 >Retrieved from the model where it may have been added by a @ModelAttribute method.
@@ -99,17 +99,17 @@ The Pet instance above is sourced in one of the following ways:
 
 One alternative to using a @ModelAttribute method to supply it or relying on the framework to create the model attribute, is to have a Converter<String, T> to provide the instance. This is applied when the model attribute name matches to the name of a request value such as a path variable or a request parameter, and there is a Converter from String to the model attribute type. In the following example, the model attribute name is account which matches the URI path variable account, and there is a registered Converter<String, Account> which could load the Account from a data store:
 
-``Java
+```ex.java
 @PutMapping("/accounts/{account}")
 public String save(@ModelAttribute("account") Account account) {
     // ...
 }
-``
+```
 After the model attribute instance is obtained, data binding is applied. The WebDataBinder class matches Servlet request parameter names (query parameters and form fields) to field names on the target Object. Matching fields are populated after type conversion is applied, where necessary. For more on data binding (and validation), see Validation. For more on customizing data binding, see DataBinder.
 
 Data binding can result in errors. By default, a BindException is raised. However, to check for such errors in the controller method, you can add a BindingResult argument immediately next to the @ModelAttribute, as the following example shows:
 
-``Java
+```ex.java
 @PostMapping("/owners/{ownerId}/pets/{petId}/edit")
 public String processSubmit(@ModelAttribute("pet") Pet pet, BindingResult result) { 
     if (result.hasErrors()) {
@@ -117,5 +117,5 @@ public String processSubmit(@ModelAttribute("pet") Pet pet, BindingResult result
     }
     // ...
 }
-``
+```
 Adding a BindingResult next to the @ModelAttribute.
