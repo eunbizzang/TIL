@@ -1,0 +1,21 @@
+Reference:
+
+https://dzone.com/articles/writing-your-first-unit-tests
+
+
+FIRST means that tests should be:
+
+
+Fast: Tests should be fast enough that you won't be discouraged from using them. If you are making changes to a class or method that has a few tests attached to them, you are much more likely to run those tests after making changes if they take about a second to run, compared to slower tests that cannot only take a while to initialize, but each test case could also take over 1 second to run. For example, I have run integration tests that would take 20+ seconds to run and I hated having to run them after code changes. Unit tests, however, do not have to test multiple components like integration tests do and, therefore, keeping them running in under 1 second should be possible.
+
+
+Independent: Tests should not depend on the state of the previous test, whether that is the state of an object or mocked methods. This allows you to run each test individually when needed, which is likely to happen if a test breaks, as you will want to debug into the method and not have to run the other tests before you can see what is going wrong. If you have a test that is looking for the existence of some data, then that data should be created in the setup of the test and preferably removed afterward so as not to affect the later tests.
+
+
+Repeatable: Tests should be repeatable in any environment without varying results. If they do not depend on a network or database, then it removes the possible reasons for tests failing, as the only thing they depend on is the code in the class or method that is being tested. If the test fails, then the method is not working correctly or the test is set up wrong — and nothing else.
+Self-validating: Each test will have a single boolean output of pass or fail. It should not be up to you to check whether the output of the method is correct each time the test is run. The test should tell you if the result of the test was valid or not. This is normally done using asserts such as assertTrue or assertEquals, which will cause the test to pass or fail depending on their results.
+
+
+Timely: Unit tests should be written just before the production code that makes the test pass. This is something that you would follow if you were doing TDD (Test Driven Development), but otherwise it might not apply. I personally do not use TDD and therefore I always write my tests after writing my production code. Although I can see the reasons for following this, I believe this is the rule that could be skipped if not appropriate.
+
+
