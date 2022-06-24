@@ -86,3 +86,6 @@ Service단을 중심으로 DB ↔ Service는 엔티티, Service → Controller�
 
 3. JPQL 에서 DTO로 바로 변환
 
+
+* Page<ObjectEntity> to Page<ObjectDTO>
+https://stackoverflow.com/questions/39036771/how-to-map-pageobjectentity-to-pageobjectdto-in-spring-data-rest
