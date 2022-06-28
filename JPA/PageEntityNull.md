@@ -72,3 +72,8 @@ public static class City implements Serializable {
 https://stackoverflow.com/questions/13539050/entitynotfoundexception-in-hibernate-many-to-one-mapping-however-data-exist
 
 
+
+
+
+
+https://stackoverflow.com/questions/67135564/how-to-make-a-field-as-optional-in-a-jpa-entity
