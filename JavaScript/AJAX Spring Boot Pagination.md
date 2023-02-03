@@ -157,3 +157,29 @@ Spring Boot pagination with AJAX
         });
     </script>
 ```
+
+
+AJAX replacewith으로 쉽게 처리 가능
+https://api.jquery.com/replacewith/
+
+```
+<div class="container">
+  <div class="inner first">Hello</div>
+  <div class="inner second">And</div>
+  <div class="inner third">Goodbye</div>
+</div>
+
+```
+
+```
+$( "div.second" ).replaceWith( "<h2>New heading</h2>" );
+```
+
+Reult
+```
+<div class="container">
+  <div class="inner first">Hello</div>
+  <h2>New heading</h2>
+  <div class="inner third">Goodbye</div>
+</div>
+```
