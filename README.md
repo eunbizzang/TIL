@@ -21,7 +21,8 @@ Header
 ---
 
 
-Line Breaks  
+Line Breaks 
+```
 띄어쓰기 2번  
 또는 <br/>
 ---
@@ -127,25 +128,23 @@ link
 Click [here](http://goddaehee.tistory.com/)  
 [갓대희의 작은 공간](https://goddaehee.tistory.com)
 
-[갓대희의 작은 공간][gdh]
-[gdh]: https://goddaehee.tistory.com
 ```
 Click [here](http://goddaehee.tistory.com/)  
 [갓대희의 작은 공간](https://goddaehee.tistory.com)
 
-[갓대희의 작은 공간][gdh]
-[gdh]: https://goddaehee.tistory.com
 
 
 Images
 ```
-![cat](https://en.wikipedia.org/wiki/File:Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg)
+![cat](https://unsplash.com/ja/%E5%86%99%E7%9C%9F/_867Jy8LCkI)
 
 
-[![cute cat](https://en.wikipedia.org/wiki/File:Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg)](https://en.wikipedia.org/wiki/File:Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg)
+[![cute cat](https://unsplash.com/ja/%E5%86%99%E7%9C%9F/_867Jy8LCkI)](https://github.com/eunbizzang)
 
 ```
-![cat](https://en.wikipedia.org/wiki/File:Orange_tabby_cat_sitting_on_fallen_leaves-Hisashi-01A.jpg)
+![cat](https://unsplash.com/ja/%E5%86%99%E7%9C%9F/_867Jy8LCkI)
+
+[![cute cat](https://unsplash.com/ja/%E5%86%99%E7%9C%9F/_867Jy8LCkI)](https://github.com/eunbizzang)
 
 
 
