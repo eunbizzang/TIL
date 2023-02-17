@@ -1,0 +1,107 @@
+https://cheese10yun.github.io/spring-guide-exception/
+
+- Error Response JSON
+```
+{
+  "message": " Invalid Input Value",
+  "status": 400,
+  // "errors":[], 비어있을 경우 null 이 아닌 빈 배열을 응답한다.
+  "errors": [
+    {
+      "field": "name.last",
+      "value": "",
+      "reason": "must not be empty"
+    },
+    {
+      "field": "name.first",
+      "value": "",
+      "reason": "must not be empty"
+    }
+  ],
+  "code": "C001"
+}
+```
+
+- Error Response 객체
+```
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class ErrorResponse {
+
+    private String message;
+    private int status;
+    private List<FieldError> errors;
+    private String code;
+    ...
+
+    @Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class FieldError {
+        private String field;
+        private String value;
+        private String reason;
+        ...
+    }
+}
+```
+
+- Error Code 정의
+```
+public enum ErrorCode {
+
+    // Common
+    INVALID_INPUT_VALUE(400, "C001", " Invalid Input Value"),
+    METHOD_NOT_ALLOWED(405, "C002", " Invalid Input Value"),
+    ....
+    HANDLE_ACCESS_DENIED(403, "C006", "Access is Denied"),
+
+    // Member
+    EMAIL_DUPLICATION(400, "M001", "Email is Duplication"),
+    LOGIN_INPUT_INVALID(400, "M002", "Login input is invalid"),
+
+    ;
+    private final String code;
+    private final String message;
+    private int status;
+
+    ErrorCode(final int status, final String code, final String message) {
+        this.status = status;
+        this.message = message;
+        this.code = code;
+    }
+}
+```
+에러코드는 enum 타입으로 한 곳에서 관리
+
+
+- Business Exception 처리
+```
+public class DeviceController {
+    ...
+    public void sendShutDown() {
+        try {
+            tryToShutDown();
+        } catch (DeviceShutDownError e) {
+            logger.log(e);
+        }
+    }
+
+    private void tryToShutDown() throws DeviceShutDownError {
+        DeviceHandle handle = getHandle(DEV1);
+        DeviceRecord record = retrieveDeviceRecord(handle);
+        pauseDevice(handle);
+        clearDeviceWorkQueue(handle);
+        closeDevice(handle);
+    }
+
+    private DeviceHandle getHandle(DeviceID id) {
+        ...
+        throw new DeviceShutDownError("Invalid handle for: " + id.toString());
+        ...
+    }
+    ...
+}
+```
+
+
+
