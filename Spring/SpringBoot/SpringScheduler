@@ -1,0 +1,30 @@
+https://www.baeldung.com/spring-scheduled-tasks
+https://reflectoring.io/spring-scheduler/
+
+dedicated class under a package that contains the code for our scheduled jobs:
+```
+import org.springframework.scheduling.annotation.EnableScheduling;
+
+@EnableScheduling
+public class SchedulerConfig {
+
+}
+```
+The scheduling will now only be activated when we load the SchedulerConfig class into the application, providing better modularization.
+
+When the @EnableScheduling annotation is processed, Spring scans the application packages to find all the Spring Beans decorated with @Scheduled methods and sets up their execution schedule.
+
+
+Enabling Scheduling Based on a Property
+```
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
+
+@Configuration
+@EnableScheduling
+@ConditionalOnProperty(name = "scheduler.enabled", matchIfMissing = true)
+public class SchedulerConfig {
+
+}
+```
