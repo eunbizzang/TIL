@@ -39,3 +39,13 @@ Gietz           Kochhar                  2 /Kochhar/Higgins/Gietz
 Higgins         King                     2 /King/Kochhar/Higgins
 Higgins         Kochhar                  1 /Kochhar/Higgins
 ```
+
+https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=stayintune&logNo=80018492832
+
+역순
+```
+SQL>SELECT LPAD(' ', 4*(LEVEL-1)) || ename ename, empno, mgr, job
+        FROM emp
+        START WITH EMPNO=7369
+       CONNECT BY empno=PRIOR mgr;
+```
