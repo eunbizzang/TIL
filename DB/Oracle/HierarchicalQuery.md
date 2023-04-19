@@ -49,3 +49,25 @@ SQL>SELECT LPAD(' ', 4*(LEVEL-1)) || ename ename, empno, mgr, job
         START WITH EMPNO=7369
        CONNECT BY empno=PRIOR mgr;
 ```
+
+
+
+
+http://www.gurubee.net/lecture/1300
+ LEVEL별로 급여 합계와 사원수를 조회하는 예제
+```
+SELECT LEVEL, AVG(sal) total, COUNT(empno) cnt
+  FROM emp
+ START WITH job='PRESIDENT'
+CONNECT BY PRIOR empno=mgr      
+ GROUP BY LEVEL
+ ORDER BY LEVEL;
+ 
+LEVEL      TOTAL        CNT
+-------- ---------- ----------
+       1       5000          1
+       2       8275          3
+       3      13850          8
+       4       1900          2
+
+```
