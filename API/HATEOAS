@@ -1,0 +1,8 @@
+https://wonit.tistory.com/454
+
+### Hypermedia As The Engine of Application State
+
+Hypermedia (링크)를 통해서 애플리케이션의 상태 전이가 가능해야 한다.
+또한 Hypermedia (링크)에 자기 자신에 대해한 정보가 담겨야 한다.
+
+https://spring.io/guides/gs/rest-hateoas/
