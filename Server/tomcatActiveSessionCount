@@ -1,0 +1,30 @@
+https://stackoverflow.com/questions/4069444/getting-a-list-of-active-sessions-in-tomcat-using-java
+
+There isn't any way to get the session count directly from tomcat. 
+
+But you can create and register a session listener and up the count when its created. 
+
+Here is an example:
+
+```
+public class SessionCounter implements HttpSessionListener {
+
+  private static int activeSessions = 0;
+
+  public void sessionCreated(HttpSessionEvent se) {
+    activeSessions++;
+  }
+
+  public void sessionDestroyed(HttpSessionEvent se) {
+    if(activeSessions > 0)
+      activeSessions--;
+    }
+
+  public static int getActiveSessions() {
+     return activeSessions;
+  }
+}
+```
+
+
+
