@@ -1,0 +1,31 @@
+https://medium.com/@leejungmin03/spring-%EC%A4%91%EB%B3%B5%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EB%B0%A9%EC%A7%80-9ef32f7e7110
+
+
+```
+@Configuration
+@EnableWebSecurity
+public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.sessionManagement()
+                .maximumSessions(1)
+                .maxSessionsPreventsLogin(false)
+                .expiredUrl("/duplicated-login")
+                .sessionRegistry(sessionRegistry());
+    }
+
+    // logout 후 login할 때 정상동작을 위함
+    @Bean
+    public SessionRegistry sessionRegistry() {
+        return new SessionRegistryImpl();
+    }
+
+    // was가 여러개 있을 때(session clustering)
+    @Bean
+    public static ServletListenerRegistrationBean httpSessionEventPublisher() {
+        return new ServletListenerRegistrationBean(new HttpSessionEventPublisher());
+    }
+
+}
+```
