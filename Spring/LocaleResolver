@@ -1,0 +1,5 @@
+Interface for web-based locale resolution strategies that allows for both locale resolution via the request and locale modification via request and response.
+This interface allows for implementations based on request, session, cookies, etc. The default implementation is AcceptHeaderLocaleResolver, simply using the request's locale provided by the respective HTTP header.
+
+https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/LocaleResolver.html
+https://sundrystore.tistory.com/37
